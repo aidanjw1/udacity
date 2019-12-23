@@ -1,18 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-            android:text="@string/name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/name_text"
-            android:textAlignment="center"
-            style="@style/nameStyle"/>
-    <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" app:srcCompat="@android:drawable/btn_star_big_on"
-            android:layout_margin="@dimen/layout_margin"
-            android:id="@+id/star_image" android:contentDescription="@string/yellow_star"/>
-</LinearLayout>
+    <data>
+        <variable
+                name="myName"
+                type="com.example.aboutme.MyName" />
+    </data>
+
+    <LinearLayout android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent" android:layout_marginStart="@dimen/layout_margin"
+                  android:layout_marginEnd="@dimen/layout_margin">
+
+        <TextView
+                android:id="@+id/name_text"
+                android:text="@={myName.name}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                style="@style/nameStyle"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/nickname_edit" style="@style/nameStyle" android:textAlignment="center"
+                android:hint="@string/what_is_your_nickname"/>
+        <Button
+                android:text="@string/done"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/done_button"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/layout_margin"
+                android:fontFamily="@font/roboto"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:text="@={myName.nickname}"
+                android:layout_height="wrap_content" android:id="@+id/nickname_text" style="@style/nameStyle"
+                android:textAlignment="center" android:visibility="gone"/>
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" app:srcCompat="@android:drawable/btn_star_big_on"
+                android:layout_margin="@dimen/layout_margin"
+                android:id="@+id/star_image" android:contentDescription="@string/yellow_star"/>
+        <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/bio_scroll">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:orientation="vertical">
+                <TextView
+                        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Suspendisse sed nisi lacus sed viverra tellus in. Nunc sed augue lacus viverra. Id semper risus in hendrerit gravida rutrum quisque. Ipsum faucibus vitae aliquet nec ullamcorper sit amet. Eu tincidunt tortor aliquam nulla facilisi cras fermentum odio. Id volutpat lacus laoreet non curabitur gravida. Quis risus sed vulputate odio ut. Volutpat est velit egestas dui id ornare. Suspendisse sed nisi lacus sed viverra tellus. Sem integer vitae justo eget magna. Iaculis urna id volutpat lacus laoreet non. Orci a scelerisque purus semper eget duis at tellus. Feugiat in ante metus dictum at tempor. Mattis aliquam faucibus purus in massa tempor. Risus nullam eget felis eget nunc lobortis.  Cras tincidunt lobortis feugiat vivamus at augue. Neque laoreet suspendisse interdum consectetur libero id faucibus nisl. Lectus nulla at volutpat diam ut. Tellus elementum sagittis vitae et leo duis ut. Sit amet dictum sit amet justo donec enim. Laoreet suspendisse interdum consectetur libero. Consequat interdum varius sit amet mattis. Vestibulum lorem sed risus ultricies tristique nulla aliquet enim. Euismod quis viverra nibh cras pulvinar mattis. Nibh praesent tristique magna sit amet purus gravida quis blandit. Interdum consectetur libero id faucibus nisl tincidunt eget nullam. Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit. Urna nec tincidunt praesent semper feugiat nibh. At consectetur lorem donec massa sapien. Quam viverra orci sagittis eu volutpat odio facilisis mauris sit. Commodo ullamcorper a lacus vestibulum sed. Nec ullamcorper sit amet risus nullam eget. Netus et malesuada fames ac. Commodo viverra maecenas accumsan lacus vel facilisis volutpat est velit.  Quis blandit turpis cursus in hac habitasse platea. Volutpat maecenas volutpat blandit aliquam etiam erat. Convallis aenean et tortor at risus viverra adipiscing at. Vel fringilla est ullamcorper eget nulla. Cursus eget nunc scelerisque viverra mauris in aliquam sem. Cursus vitae congue mauris rhoncus aenean vel elit scelerisque mauris. Egestas purus viverra accumsan in nisl nisi scelerisque eu. Eu lobortis elementum nibh tellus molestie nunc non blandit. Magna eget est lorem ipsum dolor sit amet consectetur adipiscing. Ornare suspendisse sed nisi lacus sed viverra tellus in. Sit amet consectetur adipiscing elit ut aliquam purus sit. Proin sed libero enim sed faucibus. Porttitor eget dolor morbi non arcu risus quis varius. Vitae sapien pellentesque habitant morbi. Magna fermentum iaculis eu non diam phasellus.  Magnis dis parturient montes nascetur ridiculus mus mauris. Iaculis eu non diam phasellus. Sit amet nisl purus in mollis nunc sed. Ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at. Est ultricies integer quis auctor elit sed vulputate mi. Ut tristique et egestas quis ipsum suspendisse ultrices gravida. Sagittis aliquam malesuada bibendum arcu. Dui faucibus in ornare quam viverra orci sagittis. Dolor sit amet consectetur adipiscing. Pretium viverra suspendisse potenti nullam ac tortor vitae purus faucibus. Tellus integer feugiat scelerisque varius morbi enim. Metus aliquam eleifend mi in nulla posuere sollicitudin aliquam ultrices. Sed velit dignissim sodales ut eu sem integer vitae justo. Ultricies integer quis auctor elit sed vulputate mi sit. Adipiscing vitae proin sagittis nisl rhoncus mattis rhoncus urna. Cursus eget nunc scelerisque viverra mauris in aliquam sem. Enim nulla aliquet porttitor lacus.  Risus quis varius quam quisque id diam vel quam elementum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames. Libero enim sed faucibus turpis in eu. Velit egestas dui id ornare arcu. Placerat duis ultricies lacus sed turpis. Morbi leo urna molestie at elementum. Adipiscing enim eu turpis egestas pretium aenean pharetra magna. Duis convallis convallis tellus id interdum velit. Habitant morbi tristique senectus et netus et malesuada fames. Nullam non nisi est sit amet facilisis magna etiam. Quisque egestas diam in arcu cursus euismod quis viverra. Sed lectus vestibulum mattis ullamcorper velit sed. Arcu cursus vitae congue mauris rhoncus aenean vel elit scelerisque. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu."
+                        style="@style/nameStyle"
+                        android:lineSpacingMultiplier="1.2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:id="@+id/textView"/>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>
