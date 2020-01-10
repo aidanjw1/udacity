@@ -28,17 +28,23 @@ import androidx.navigation.ui.NavigationUI
 import com.example.android.navigation.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var navDrawer: DrawerLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         @Suppress("UNUSED_VARIABLE")
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
 
+        navDrawer = binding.drawerLayout
+
         val navController = this.findNavController(R.id.NavHostFragment)
-        NavigationUI.setupActionBarWithNavController(this, navController)
+        NavigationUI.setupActionBarWithNavController(this, navController, navDrawer)
+        NavigationUI.setupWithNavController(binding.navView, navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = this.findNavController(R.id.NavHostFragment)
-        return navController.navigateUp()
+        return NavigationUI.navigateUp(navController, navDrawer)
     }
 }
