@@ -17,11 +17,57 @@
 
 package com.example.android.marsrealestate.network
 
+import android.os.Parcel
+import android.os.Parcelable
 import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 class MarsProperty(
         val id: String,
         @Json(name = "img_src") val imgSourceUrl : String,
         val type: String,
         val price: Double
-)
+) : Parcelable {
+    val isRental get() = type == "rent"
+}
+
+
+
+// Verbose version without experimental Kotlin extensions
+// =======================================================
+
+//class MarsProperty(
+//        val id: String,
+//        @Json(name = "img_src") val imgSourceUrl : String,
+//        val type: String,
+//        val price: Double
+//) : Parcelable {
+//    constructor(parcel: Parcel) : this(
+//            parcel.readString(),
+//            parcel.readString(),
+//            parcel.readString(),
+//            parcel.readDouble()) {
+//    }
+//
+//    override fun writeToParcel(parcel: Parcel, flags: Int) {
+//        parcel.writeString(id)
+//        parcel.writeString(imgSourceUrl)
+//        parcel.writeString(type)
+//        parcel.writeDouble(price)
+//    }
+//
+//    override fun describeContents(): Int {
+//        return 0
+//    }
+//
+//    companion object CREATOR : Parcelable.Creator<MarsProperty> {
+//        override fun createFromParcel(parcel: Parcel): MarsProperty {
+//            return MarsProperty(parcel)
+//        }
+//
+//        override fun newArray(size: Int): Array<MarsProperty?> {
+//            return arrayOfNulls(size)
+//        }
+//    }
+//}
