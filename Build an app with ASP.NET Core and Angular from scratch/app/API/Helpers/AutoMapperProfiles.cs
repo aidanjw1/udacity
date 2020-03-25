@@ -21,6 +21,11 @@ namespace API.Helpers
             CreateMap<Photo, PhotosForDetailsDto>();
 
             CreateMap<UserForUpdateDto, User>();
+
+            CreateMap<Photo, PhotoForReturnDto>();
+                // .ForMember(dest => dest.PublicId, opt => opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).Url));
+
+            CreateMap<PhotoForCreationDto, Photo>();
         }    
     }
 }
