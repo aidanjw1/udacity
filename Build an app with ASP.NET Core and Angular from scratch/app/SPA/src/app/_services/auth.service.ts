@@ -23,6 +23,7 @@ export class AuthService {
     this.decodedToken = token? this.jwtHelper.decodeToken(token) : undefined;
     if (user) {
       this.currentUser = JSON.parse(user);
+      console.log(this.currentUser);
       this.changeMemberPhoto(this.currentUser.photoUrl);
     }
 
@@ -45,8 +46,8 @@ export class AuthService {
       }))
   }
 
-  register(model: any) {
-    return this.http.post(this.baseUrl + 'register', model);
+  register(user: User) {
+    return this.http.post(this.baseUrl + 'register', user);
   }
 
   loggedIn() {

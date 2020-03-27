@@ -83,7 +83,7 @@ namespace API.Controllers
 
             if (!userFromRepo.Photos.Any(u => u.IsMain))
             {
-                photo.IsMain = true;
+                photo.IsMain = true;                
             }            
 
             userFromRepo.Photos.Add(photo);            

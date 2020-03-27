@@ -30,23 +30,18 @@ namespace API.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register(UserForRegisterDto userForRegisterDto)
         {
-            var username = userForRegisterDto.Username;
-            var password = userForRegisterDto.Password;
+            userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
 
-            // validate the request
 
-            username = username.ToLower();
+            if (await _repo.UserExists(userForRegisterDto.Username)) return BadRequest("Username already exists");
 
-            if (await _repo.UserExists(username)) return BadRequest("Username already exists");
+            var userToCreate = _mapper.Map<User>(userForRegisterDto);
 
-            var userToCreate = new User
-            {
-                Username = username
-            };
+            var createdUser = await _repo.Register(userToCreate, userForRegisterDto.Password);
 
-            var createdUser = _repo.Register(userToCreate, password);
-
-            return StatusCode(201);
+            return CreatedAtRoute("GetUser", 
+                new { controller = "Users", id = createdUser.Id }, 
+                _mapper.Map<UserForDetailsDto>(createdUser));
         }
 
         [HttpPost("login")]
